@@ -8,7 +8,7 @@ public class MyDOMConfigurator extends DOMConfigurator {
 	public MyDOMConfigurator() {
 		super();
 		Object guard = new Object();
-		LogManager.setRepositorySelector(new MyRepositorySelector(), guard);
+		LogManager.setRepositorySelector(new MyRepositorySelector1(), guard);
 	}
 
 }

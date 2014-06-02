@@ -19,6 +19,7 @@ public class MyRepositorySelector implements RepositorySelector {
 	}
 
 	// the returned value is guaranteed to be non-null
+	@SuppressWarnings("deprecation")
 	public LoggerRepository getLoggerRepository() {
 		ClassLoader cl = Thread.currentThread().getContextClassLoader();
 		Hierarchy hierarchy = (Hierarchy) ht.get(cl);

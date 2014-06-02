@@ -6,7 +6,7 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
  
 	<servlet>
 		<servlet-name>log4jcontrol</servlet-name>
-		<servlet-class>com.log4j.Log4jConfigurationServlet</servlet-class>
+		<servlet-class>com.andersonnascimento.log4j.Log4jConfigurationServlet</servlet-class>
 	</servlet>
  
 	<servlet-mapping>

@@ -7,7 +7,7 @@ public class RegisterLogger {
 	static{
 		Object guard = new Object();
 		
-		LogManager.setRepositorySelector(new MyRepositorySelector(), guard);
+		LogManager.setRepositorySelector(new MyRepositorySelector1(), guard);
 
 		org.apache.log4j.BasicConfigurator.configure();
 	}
