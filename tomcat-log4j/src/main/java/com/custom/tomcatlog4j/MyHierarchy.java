@@ -18,5 +18,4 @@ public class MyHierarchy extends Hierarchy{
 	    return super.getLogger(name, defaultFactory);
 	}
 
-
 }

@@ -10,15 +10,12 @@ import org.apache.log4j.spi.RootCategory;
 
 public class MyRepositorySelector implements RepositorySelector {
 
-	// key: current thread's ContextClassLoader,
-	// value: Hierarchy instance
-	private Hashtable<ClassLoader, Hierarchy> ht;
+	private Hashtable<Object, Hierarchy> ht;
 
 	public MyRepositorySelector() {
-		ht = new Hashtable<ClassLoader, Hierarchy>();
+		ht = new Hashtable<Object, Hierarchy>();
 	}
 
-	// the returned value is guaranteed to be non-null
 	@SuppressWarnings("deprecation")
 	public LoggerRepository getLoggerRepository() {
 		ClassLoader cl = Thread.currentThread().getContextClassLoader();
@@ -31,10 +28,19 @@ public class MyRepositorySelector implements RepositorySelector {
 		return hierarchy;
 	}
 
-	/**
-	 * The Container should remove the entry when the web-application is removed
-	 * or restarted.
-	 * */
+	public void addLoggerRepository(Hierarchy hierarchy, Object guard){
+
+		/*
+		Hierarchy hierarchy = (Hierarchy) ht.get(guard);
+		if (hierarchy == null) {
+			hierarchy = new MyHierarchy(new RootCategory((Level) Level.DEBUG));
+			ht.put(cl, hierarchy);
+		}
+		*/
+		
+		ht.put(guard, hierarchy);
+	}
+	
 	public void remove(ClassLoader cl) {
 		ht.remove(cl);
 	}
