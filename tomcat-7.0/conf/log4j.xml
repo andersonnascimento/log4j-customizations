@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="true"
+                     xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+<!-- 
+	<loggerFactory class="com.custom.tomcatlog4j.MyLoggerFactory"/>
+ -->
+   <appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss} %5p %c{1} - %m%n"/>
+      </layout>
+   </appender>
+
+   <appender name="fileAppender" class="org.apache.log4j.RollingFileAppender">
+      <param name="append" value="false"/>
+      <param name="file" value="${catalina.home}/logging.log"/>
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c{1}] %m%n"/>
+      </layout>
+   </appender>
+
+   <logger name="com.webtests.log4j" >
+   	<level value="TRACE"/>
+   </logger>
+
+	
+   <root>
+      <level value="info"/>
+      <appender-ref ref="consoleAppender"/>
+      <appender-ref ref="fileAppender"/>
+   </root>
+</log4j:configuration>

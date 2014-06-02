@@ -1,0 +1,17 @@
+21:58:50,952 INFO  [AprLifecycleListener] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+21:58:51,298 INFO  [Http11Protocol] Initializing ProtocolHandler ["http-bio-8080"]
+21:58:51,316 INFO  [AjpProtocol] Initializing ProtocolHandler ["ajp-bio-8009"]
+21:58:51,318 INFO  [Catalina] Initialization processed in 822 ms
+21:58:51,362 INFO  [StandardService] Starting service Catalina
+21:58:51,362 INFO  [StandardEngine] Starting Servlet Engine: Apache Tomcat/7.0.42
+21:58:51,381 INFO  [HostConfig] Deploying web application directory /home/silvaa/dev/source/webtests/tomcat-7.0/webapps/docs
+21:58:51,847 INFO  [HostConfig] Deploying web application directory /home/silvaa/dev/source/webtests/tomcat-7.0/webapps/ROOT
+21:58:51,875 INFO  [HostConfig] Deploying web application directory /home/silvaa/dev/source/webtests/tomcat-7.0/webapps/host-manager
+21:58:51,938 INFO  [HostConfig] Deploying web application directory /home/silvaa/dev/source/webtests/tomcat-7.0/webapps/examples
+21:58:52,128 INFO  [[/examples]] ContextListener: contextInitialized()
+21:58:52,129 INFO  [[/examples]] SessionListener: contextInitialized()
+21:58:52,138 INFO  [[/examples]] ContextListener: attributeAdded('org.apache.jasper.compiler.TldLocationsCache', 'org.apache.jasper.compiler.TldLocationsCache@3cb4a836')
+21:58:52,139 INFO  [HostConfig] Deploying web application directory /home/silvaa/dev/source/webtests/tomcat-7.0/webapps/manager
+21:58:52,192 INFO  [Http11Protocol] Starting ProtocolHandler ["http-bio-8080"]
+21:58:52,209 INFO  [AjpProtocol] Starting ProtocolHandler ["ajp-bio-8009"]
+21:58:52,217 INFO  [Catalina] Server startup in 898 ms
