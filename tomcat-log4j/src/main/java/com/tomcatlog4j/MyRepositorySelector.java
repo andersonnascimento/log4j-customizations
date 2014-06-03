@@ -17,10 +17,15 @@ public class MyRepositorySelector implements RepositorySelector {
 		ht = new Hashtable<Object, Hierarchy>();
 		
 		ht.put(Thread.currentThread().getContextClassLoader(), (Hierarchy) LogManager.getLoggerRepository());
+		
+		System.out.println(Thread.currentThread().getContextClassLoader().toString());
 	}
 
 	@SuppressWarnings("deprecation")
 	public LoggerRepository getLoggerRepository() {
+		System.out.println(Thread.currentThread().getContextClassLoader().toString());
+		
+		
 		ClassLoader cl = Thread.currentThread().getContextClassLoader();
 		Hierarchy hierarchy = (Hierarchy) ht.get(cl);
 		if (hierarchy == null) {
@@ -31,19 +36,6 @@ public class MyRepositorySelector implements RepositorySelector {
 			
 		}
 		return hierarchy;
-	}
-
-	public void addLoggerRepository(Hierarchy hierarchy, Object guard){
-
-		/*
-		Hierarchy hierarchy = (Hierarchy) ht.get(guard);
-		if (hierarchy == null) {
-			hierarchy = new MyHierarchy(new RootCategory((Level) Level.DEBUG));
-			ht.put(cl, hierarchy);
-		}
-		*/
-		
-		ht.put(guard, hierarchy);
 	}
 	
 	public void remove(ClassLoader cl) {
