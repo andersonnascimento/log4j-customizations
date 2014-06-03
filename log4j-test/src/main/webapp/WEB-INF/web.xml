@@ -6,7 +6,7 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
  
 	<servlet>
 		<servlet-name>log4jservlet</servlet-name>
-		<servlet-class>com.webtests.log4j.ex1.Log4jServlet</servlet-class>
+		<servlet-class>com.log4jtest.Log4jServlet</servlet-class>
 	</servlet>
  
 	<servlet-mapping>
@@ -17,7 +17,7 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
 	<servlet>
 		<servlet-name>log4jconfigurationservlet</servlet-name>
-		<servlet-class>com.webtests.log4j.ex1.Log4jConfigurationServlet</servlet-class>
+		<servlet-class>com.log4jtest.Log4jConfigurationServlet</servlet-class>
 	</servlet>
  
 	<servlet-mapping>

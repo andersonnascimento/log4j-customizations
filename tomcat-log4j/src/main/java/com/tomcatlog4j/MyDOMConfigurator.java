@@ -1,4 +1,4 @@
-package com.custom.tomcatlog4j;
+package com.tomcatlog4j;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.xml.DOMConfigurator;

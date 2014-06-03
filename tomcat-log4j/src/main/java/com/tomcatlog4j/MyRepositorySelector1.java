@@ -1,4 +1,4 @@
-package com.custom.tomcatlog4j;
+package com.tomcatlog4j;
 
 import java.util.Hashtable;
 

@@ -1,5 +1,5 @@
 
-package com.webtests.log4j.lib;
+package com.log4jlib;
 
 import org.apache.log4j.Logger;
 

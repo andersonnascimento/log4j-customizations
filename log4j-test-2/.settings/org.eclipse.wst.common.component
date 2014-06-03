@@ -5,6 +5,9 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+        <dependent-module archiveName="log4j-test-lib-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/log4j-test-lib/log4j-test-lib">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/log4j-test/target/classes"/>
         <property name="context-root" value="log4j-test-2"/>
     </wb-module>

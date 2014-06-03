@@ -1,4 +1,4 @@
-package com.webtests.log4j.ex1;
+package com.log4jcontrol;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,7 +19,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import com.custom.tomcatlog4j.MyLogger;
+import com.tomcatlog4j.MyLogger;
 
 public class Log4jConfigurationServlet extends HttpServlet
 {

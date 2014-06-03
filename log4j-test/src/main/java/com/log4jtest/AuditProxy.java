@@ -1,4 +1,4 @@
-package com.webtests.log4j.ex2;
+package com.log4jtest;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

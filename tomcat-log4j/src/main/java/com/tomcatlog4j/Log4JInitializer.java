@@ -1,4 +1,4 @@
-package com.custom.tomcatlog4j;
+package com.tomcatlog4j;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -41,8 +41,6 @@ public class Log4JInitializer implements LifecycleListener
 */
   
         	MyRepositorySelector selector = new MyRepositorySelector();
-        	selector.addLoggerRepository((Hierarchy) LogManager.getLoggerRepository(), Thread.currentThread().getContextClassLoader());
-        	
         	LogManager.setRepositorySelector(selector,guard);
         }
     }

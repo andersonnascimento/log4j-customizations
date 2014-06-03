@@ -22,7 +22,7 @@
   <Listener className="org.apache.catalina.security.SecurityListener" />
   -->
 
-	<Listener className="com.custom.tomcatlog4j.Log4JInitializer"/>
+	<Listener className="com.tomcatlog4j.Log4JInitializer"/>
 
   <!--APR library loader. Documentation at /docs/apr.html -->
   <Listener SSLEngine="on" className="org.apache.catalina.core.AprLifecycleListener"/>

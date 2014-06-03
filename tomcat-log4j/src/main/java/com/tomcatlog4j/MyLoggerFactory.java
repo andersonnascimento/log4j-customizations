@@ -1,5 +1,5 @@
 
-package com.custom.tomcatlog4j;
+package com.tomcatlog4j;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.spi.LoggerFactory;
