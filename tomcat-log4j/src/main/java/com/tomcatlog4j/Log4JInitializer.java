@@ -10,8 +10,11 @@ import org.apache.catalina.LifecycleListener;
 import org.apache.log4j.Hierarchy;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.log4j.helpers.Loader;
+import org.apache.log4j.helpers.OptionConverter;
 import org.apache.log4j.spi.LoggerFactory;
 import org.apache.log4j.spi.RepositorySelector;
+import org.apache.log4j.xml.DOMConfigurator;
 
 public class Log4JInitializer implements LifecycleListener
 {
@@ -42,6 +45,8 @@ public class Log4JInitializer implements LifecycleListener
   
         	MyRepositorySelector selector = new MyRepositorySelector();
         	LogManager.setRepositorySelector(selector,guard);
+        	
+        	//DOMConfigurator.configure(OptionConverter.getSystemProperty("log4j.configuration", null));
         }
     }
 }

@@ -1,0 +1,23 @@
+19:00:01,548 INFO  [AprLifecycleListener] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+19:00:01,715 WARN  [Digester] [SetPropertiesRule]{Server/Service/Engine/Host/Context} Setting property 'source' to 'org.eclipse.jst.j2ee.server:log4j-control' did not find a matching property.
+19:00:01,726 WARN  [Digester] [SetPropertiesRule]{Server/Service/Engine/Host/Context} Setting property 'source' to 'org.eclipse.jst.j2ee.server:log4j-test' did not find a matching property.
+19:00:01,727 WARN  [Digester] [SetPropertiesRule]{Server/Service/Engine/Host/Context} Setting property 'source' to 'org.eclipse.jst.j2ee.server:log4j-test-2' did not find a matching property.
+19:00:01,926 INFO  [Http11Protocol] Initializing ProtocolHandler ["http-bio-8080"]
+19:00:01,947 INFO  [AjpProtocol] Initializing ProtocolHandler ["ajp-bio-8009"]
+19:00:01,949 INFO  [Catalina] Initialization processed in 863 ms
+19:00:01,987 INFO  [StandardService] Starting service Catalina
+19:00:01,987 INFO  [StandardEngine] Starting Servlet Engine: Apache Tomcat/7.0.42
+19:00:11,276 INFO  [HostConfig] Deploying web application directory /home/silvaa/dev/source/log4j-customizations/tomcat-7.0/webapps/manager
+19:00:11,338 INFO  [HostConfig] Deploying web application directory /home/silvaa/dev/source/log4j-customizations/tomcat-7.0/webapps/docs
+19:00:11,359 INFO  [HostConfig] Deploying web application directory /home/silvaa/dev/source/log4j-customizations/tomcat-7.0/webapps/ROOT
+19:00:11,380 INFO  [HostConfig] Deploying web application directory /home/silvaa/dev/source/log4j-customizations/tomcat-7.0/webapps/examples
+19:00:11,594 INFO  [HostConfig] Deploying web application directory /home/silvaa/dev/source/log4j-customizations/tomcat-7.0/webapps/host-manager
+19:00:11,631 INFO  [Http11Protocol] Starting ProtocolHandler ["http-bio-8080"]
+19:00:11,674 INFO  [AjpProtocol] Starting ProtocolHandler ["ajp-bio-8009"]
+19:00:11,677 INFO  [Catalina] Server startup in 9727 ms
+19:06:51,868 INFO  [StandardContext] Reloading Context with name [/log4j-test] has started
+19:06:52,345 INFO  [StandardContext] Reloading Context with name [/log4j-test] is completed
+19:06:52,345 INFO  [StandardContext] Reloading Context with name [/log4j-test-2] has started
+19:06:52,812 INFO  [StandardContext] Reloading Context with name [/log4j-test-2] is completed
+19:06:52,812 INFO  [StandardContext] Reloading Context with name [/log4j-control] has started
+19:06:53,266 INFO  [StandardContext] Reloading Context with name [/log4j-control] is completed
