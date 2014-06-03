@@ -4,8 +4,8 @@
 	<groupId>webtests</groupId>
 	<artifactId>log4j-test-2</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>log4j-custom Maven Webapp</name>
+	<version>1.0-SNAPSHOT</version>
+	<name>log4j-test2</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
@@ -30,14 +30,14 @@
 		<dependency>
 			<groupId>com.custom.tomcat-log4j</groupId>
   			<artifactId>tomcat-log4j</artifactId>
-	  		<version>0.0.1-SNAPSHOT</version>
+	  		<version>1.0-SNAPSHOT</version>
 	  		<scope>provided</scope>
 		</dependency>
 		
 		<dependency>
 			<groupId>webtests</groupId>
 			<artifactId>log4j-test-lib</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0-SNAPSHOT</version>
 		</dependency>
 
 	</dependencies>
