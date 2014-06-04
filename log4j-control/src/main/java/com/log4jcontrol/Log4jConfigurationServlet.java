@@ -110,11 +110,9 @@ public class Log4jConfigurationServlet extends HttpServlet {
 	 */
 	private static final String PACKAGE_DELIM = ",";
 
-	private static final String PARAM_CLASSLOADER = "classloader";
-
-	
-	private static Hashtable<String, ClassLoader> loggers;
-	private static String currentLoggerClassLoader;
+	private static final String SERVER_CLASSLOADER = "server";
+	private static final String PARAM_CLASSLOADER = "context";
+	private Hashtable<String, ClassLoader> classLoaders;
 	
 		
 	/**
@@ -139,6 +137,9 @@ public class Log4jConfigurationServlet extends HttpServlet {
 		String filter = request.getParameter(FILTER_CRITERIA);
 		String newPackageName = request.getParameter(ADD_PACKAGE_NAME);
 
+		String currentClassLoader = request.getParameter(PARAM_CLASSLOADER);
+		
+
 		if (className != null && level != null) {
 			setClass(className, level);
 		}
@@ -150,10 +151,17 @@ public class Log4jConfigurationServlet extends HttpServlet {
 		String sortByLevelParam = request.getParameter(PARAM_SORTBYLEVEL);
 		boolean sortByLevel = ("true".equalsIgnoreCase(sortByLevelParam) || "yes".equalsIgnoreCase(sortByLevelParam));
 
-		List<Logger> loggers = getSortedLoggers(sortByLevel);
+		PrintWriter out = response.getWriter();
+		
+		displayClassLoaders(out);
+
+		
+		
+		
+		List<Logger> loggers = getSortedLoggers(currentClassLoader, sortByLevel);
 		int loggerNum = 0;
 
-		PrintWriter out = response.getWriter();
+		
 		
 		displayFilter(out, filter, newPackageName);
 		if (!isFragment) {
@@ -163,28 +171,7 @@ public class Log4jConfigurationServlet extends HttpServlet {
 			printHeader(out, request);
 		}
 
-		
-		Enumeration<Object> keys = RepositoryClassLoader.getInstance().getClassLoaderList();
-		 
-		int test = 1;
-		while (keys.hasMoreElements()) {
-			ClassLoader cl = (ClassLoader) keys.nextElement();
-			//WebappClassLoader context: /examples delegate: false repositories: /WEB-INF/classes/ ----------> Parent Classloader: org.apache.catalina.loader.StandardClassLoader@3ff72465 
-			
-			if (cl instanceof StandardClassLoader){
-				out.println("<a href=\"?" + PARAM_CLASSLOADER + "=tomcat \">Tomcat classloader</a>");				
-			}
-			else {
-				out.println("<a href=\"?" + PARAM_CLASSLOADER + "="+test+" \"> Context: "+ ((WebappClassLoader) cl).getContextName() +"</a>");
-				
-			}
-			out.print(cl);
-			
-			out.print("<br>");
-			test++;
-		}		
-		
-		
+
 		out.print("<br>");
 		out.print("<br>");
 		
@@ -228,6 +215,31 @@ public class Log4jConfigurationServlet extends HttpServlet {
 			out.flush();
 			out.close();
 		}
+	}
+	
+	
+	public void displayClassLoaders(PrintWriter out){
+		Enumeration<Object> keys = RepositoryClassLoader.getInstance().getClassLoaderList();
+		 
+		classLoaders = new Hashtable<String, ClassLoader>();
+		int i = 1;
+		while (keys.hasMoreElements()) {
+			ClassLoader cl = (ClassLoader) keys.nextElement();
+			//WebappClassLoader context: /examples delegate: false repositories: /WEB-INF/classes/ ----------> Parent Classloader: org.apache.catalina.loader.StandardClassLoader@3ff72465 
+			
+			if (cl instanceof StandardClassLoader){
+				out.println("<a href=\"?" + PARAM_CLASSLOADER + "="+SERVER_CLASSLOADER+" \">Server classloader</a>");
+				classLoaders.put(SERVER_CLASSLOADER, cl);
+			}
+			else {
+				out.println("<a href=\"?" + PARAM_CLASSLOADER + "="+i+" \"> Context: "+ ((WebappClassLoader) cl).getContextName() +"</a>");
+				classLoaders.put(""+i, cl);	
+			}
+			
+			out.print(cl);
+			out.print("<br>");
+			i++;
+		}		
 	}
 
 	/**
@@ -276,6 +288,12 @@ public class Log4jConfigurationServlet extends HttpServlet {
 
 		out.println("<tr class=\"" + color + "\">");
 
+		// class logger
+	       out.println("<td>");
+	       out.println(logger.getClass().getName());
+	       out.println("</td>");
+		
+		
 		// logger
 		out.println("<td style=\"min-width:300px\">");
 		out.println(loggerName);
@@ -333,11 +351,20 @@ public class Log4jConfigurationServlet extends HttpServlet {
 	 * 
 	 * @param sortByLevel
 	 *            if <code>true</code> sort loggers by level instead of name.
-	 * @return List the list of sorted loggers.
+	 * @return classLoaderList the list of sorted loggers.
 	 */
 	@SuppressWarnings("unchecked")
-	private List<Logger> getSortedLoggers(boolean sortByLevel) {
-		Enumeration<Logger> enm = LogManager.getCurrentLoggers();
+	private List<Logger> getSortedLoggers(String currentClassLoader, boolean sortByLevel) {
+		//Enumeration<Logger> enm = LogManager.getCurrentLoggers();
+		ClassLoader cl = null;
+		if ((currentClassLoader != null) && (!currentClassLoader.isEmpty()) && (!currentClassLoader.equals(""))) {
+			cl = classLoaders.get(currentClassLoader); 
+		}
+		else {
+			cl = Thread.currentThread().getContextClassLoader();
+		}
+
+		Enumeration<Logger> enm = RepositoryClassLoader.getInstance().getLoggerRepository(cl).getCurrentLoggers();
 
 		List<Logger> list = new ArrayList<Logger>();
 

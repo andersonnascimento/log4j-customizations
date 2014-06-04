@@ -1,17 +1,22 @@
 package com.tomcatlog4j;
 
-import java.util.ArrayList;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Enumeration;
 import java.util.Hashtable;
-import java.util.List;
 
 import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.helpers.OptionConverter;
 import org.apache.log4j.spi.LoggerRepository;
 import org.apache.log4j.spi.RootCategory;
+import org.apache.log4j.xml.DOMConfigurator;
 
+@SuppressWarnings("deprecation")
 public class RepositoryClassLoader {
+
 	private static RepositoryClassLoader instance = null;
-	
+	private static LoggerRepository defaultRepository; 
 	private Hashtable<Object, LoggerRepository> ht;
 	
 	public RepositoryClassLoader(){
@@ -30,12 +35,25 @@ public class RepositoryClassLoader {
 		ht.put(classLoader, loggerRepository);
 	}
 	
-	public synchronized LoggerRepository getLoggerRepository(ClassLoader classLoader){
+	public LoggerRepository getLoggerRepository(ClassLoader classLoader) {
 		LoggerRepository loggerRepository = (LoggerRepository) ht.get(classLoader);
 		
-		if (loggerRepository == null) {
-			loggerRepository = new MyHierarchy(new RootCategory((Level) Level.DEBUG));
-			add(classLoader, loggerRepository);	
+		synchronized (ht){
+			if (loggerRepository == null) {
+				loggerRepository = new MyHierarchy(new RootCategory((Level) Level.DEBUG));
+				add(classLoader, loggerRepository);
+				/*
+				//loggerRepository
+				URL file;
+				try {
+					file = new URL(OptionConverter.getSystemProperty("log4j.configuration", null));
+					DOMConfigurator.configure(file);
+				} catch (MalformedURLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				*/
+			}
 		}
 		
 		return loggerRepository;
@@ -47,5 +65,13 @@ public class RepositoryClassLoader {
 	
 	public Enumeration<Object> getClassLoaderList(){
 		return ht.keys();
+	}
+
+	public static LoggerRepository getDefaultRepository() {
+		return defaultRepository;
+	}
+
+	public static void setDefaultRepository(LoggerRepository defaultRepository) {
+		RepositoryClassLoader.defaultRepository = defaultRepository;
 	}
 }

@@ -1,4 +1,4 @@
-package com.tomcatlog4j;
+package com.custom.tomcatlog4j;
 
 import java.util.Hashtable;
 
@@ -7,6 +7,8 @@ import org.apache.log4j.Level;
 import org.apache.log4j.spi.LoggerRepository;
 import org.apache.log4j.spi.RepositorySelector;
 import org.apache.log4j.spi.RootCategory;
+
+import com.tomcatlog4j.MyHierarchy;
 
 public class MyRepositorySelector1 implements RepositorySelector {
 

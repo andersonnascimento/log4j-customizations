@@ -21,9 +21,8 @@
   <!-- Security listener. Documentation at /docs/config/listeners.html
   <Listener className="org.apache.catalina.security.SecurityListener" />
   -->
-
 	<Listener className="com.tomcatlog4j.Log4JInitializer"/>
-
+	
   <!--APR library loader. Documentation at /docs/apr.html -->
   <Listener SSLEngine="on" className="org.apache.catalina.core.AprLifecycleListener"/>
   <!--Initialize Jasper prior to webapps are loaded. Documentation at /docs/jasper-howto.html -->
@@ -32,6 +31,7 @@
   <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener"/>
   <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
   <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener"/>
+
 
 
   <!-- Global JNDI resources
@@ -128,9 +128,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log." suffix=".txt"/>
 
-      
-      
-      <Context docBase="log4j-control" path="/log4j-control" reloadable="true" source="org.eclipse.jst.j2ee.server:log4j-control"/><Context docBase="log4j-test" path="/log4j-test" reloadable="true" source="org.eclipse.jst.j2ee.server:log4j-test"/><Context docBase="log4j-test-2" path="/log4j-test-2" reloadable="true" source="org.eclipse.jst.j2ee.server:log4j-test-2"/></Host>
+      <Context docBase="log4j-control" path="/log4j-control" reloadable="true" source="org.eclipse.jst.jee.server:log4j-control"/><Context docBase="log4j-test" path="/log4j-test" reloadable="true" source="org.eclipse.jst.jee.server:log4j-test"/><Context docBase="log4j-test-2" path="/log4j-test-2" reloadable="true" source="org.eclipse.jst.j2ee.server:log4j-test-2"/></Host>
     </Engine>
   </Service>
 </Server>
