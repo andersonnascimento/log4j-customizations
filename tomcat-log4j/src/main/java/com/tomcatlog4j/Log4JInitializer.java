@@ -8,6 +8,7 @@ public class Log4JInitializer implements LifecycleListener {
 
 	public void lifecycleEvent(LifecycleEvent event) {
 		if (Lifecycle.BEFORE_INIT_EVENT.equals(event.getType())) {
+			
 			try {
 				MyRepositorySelector.init();
 			} catch (Exception e) {

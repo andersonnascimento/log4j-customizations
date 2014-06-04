@@ -155,8 +155,7 @@ public class Log4jConfigurationServlet extends HttpServlet {
 		
 		displayClassLoaders(out);
 
-		
-		
+			
 		
 		List<Logger> loggers = getSortedLoggers(currentClassLoader, sortByLevel);
 		int loggerNum = 0;

@@ -51,7 +51,7 @@ public class Log4jServlet extends HttpServlet{
 			Something something = new Something();
 			something.doSomething();
 			
-			out.println("<h1>Log4jServlet - 1</h1>");
+			out.println("<h1>Log4jServlet - 2</h1>");
 			out.println("</body>");
 			out.println("</html>");	
 		}

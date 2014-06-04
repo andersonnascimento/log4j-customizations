@@ -41,10 +41,10 @@ public class RepositoryClassLoader {
 		synchronized (ht){
 			if (loggerRepository == null) {
 				loggerRepository = new MyHierarchy(new RootCategory((Level) Level.DEBUG));
-				add(classLoader, loggerRepository);
-				/*
+				
+				
 				//loggerRepository
-				URL file;
+				/*URL file;
 				try {
 					file = new URL(OptionConverter.getSystemProperty("log4j.configuration", null));
 					DOMConfigurator.configure(file);
@@ -53,6 +53,16 @@ public class RepositoryClassLoader {
 					e.printStackTrace();
 				}
 				*/
+				try {
+					String log4jXmlUrl = OptionConverter.getSystemProperty("log4j.configuration", null);
+					DOMConfigurator conf = new DOMConfigurator();
+					conf.doConfigure(new URL(log4jXmlUrl), loggerRepository);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				
+				add(classLoader, loggerRepository);
 			}
 		}
 		
