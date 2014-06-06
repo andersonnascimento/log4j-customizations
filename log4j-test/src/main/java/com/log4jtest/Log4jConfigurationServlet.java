@@ -19,8 +19,6 @@ import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import com.tomcatlog4j.MyLogger;
-
 public class Log4jConfigurationServlet extends HttpServlet
 {
 
@@ -232,7 +230,8 @@ public class Log4jConfigurationServlet extends HttpServlet
     		   logger = Logger.getRootLogger();
     	   }
     	   else {
-    		   logger = new MyLogger(Logger.getLogger(className));   
+    		   //logger = new MyLogger(Logger.getLogger(className));   
+    		   logger = Logger.getLogger(className);
     	   }
            
            logger.setLevel(Level.toLevel(level));

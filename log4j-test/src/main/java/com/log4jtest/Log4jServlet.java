@@ -7,14 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.apache.log4j.spi.DefaultRepositorySelector;
-import org.apache.log4j.spi.RootLogger;
 
 import com.log4jlib.Something;
-import com.tomcatlog4j.MyHierarchy;
 
 public class Log4jServlet extends HttpServlet{
 	

@@ -33,27 +33,8 @@ public class MyRepositorySelector implements RepositorySelector {
 			initialized = true;
 		}
 
-		Hierarchy hierarchy = new Hierarchy(new RootCategory(Level.DEBUG));
-		loadLog4JConfig(hierarchy);
-		ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		RepositoryClassLoader.getInstance().add(loader, hierarchy);
-
 	}
-
-	// load log4j.xml from WEB-INF
-	private static void loadLog4JConfig(Hierarchy hierarchy) throws SAXException, IOException, ParserConfigurationException{
-		//String log4jFile = "/WEB-INF/log4j.xml";
-		//String log4jXmlUrl = OptionConverter.getSystemProperty("log4j.configuration", null);
-		//InputStream log4JConfig = Thread.currentThread().getContextClassLoader().getResourceAsStream(log4jFile);
-		//InputStream log4JConfig = new FileInputStream(new File(log4jFile));
-		//Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(log4JConfig);
-		//DOMConfigurator conf = new DOMConfigurator();
-		//conf.doConfigure(doc.getDocumentElement(), hierarchy);
-		String log4jXmlUrl = OptionConverter.getSystemProperty("log4j.configuration", null);
-		DOMConfigurator conf = new DOMConfigurator();
-		conf.doConfigure(new URL(log4jXmlUrl), hierarchy);
-	}
-
+	
 	public LoggerRepository getLoggerRepository() {
 		ClassLoader loader = Thread.currentThread().getContextClassLoader();
 		return RepositoryClassLoader.getInstance().getLoggerRepository(loader);

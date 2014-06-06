@@ -1,12 +1,11 @@
 package com.tomcatlog4j;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
+import org.apache.log4j.Hierarchy;
 import org.apache.log4j.Level;
-import org.apache.log4j.LogManager;
 import org.apache.log4j.helpers.OptionConverter;
 import org.apache.log4j.spi.LoggerRepository;
 import org.apache.log4j.spi.RootCategory;
@@ -40,19 +39,8 @@ public class RepositoryClassLoader {
 		
 		synchronized (ht){
 			if (loggerRepository == null) {
-				loggerRepository = new MyHierarchy(new RootCategory((Level) Level.DEBUG));
+				loggerRepository = new Hierarchy(new RootCategory((Level) Level.DEBUG));
 				
-				
-				//loggerRepository
-				/*URL file;
-				try {
-					file = new URL(OptionConverter.getSystemProperty("log4j.configuration", null));
-					DOMConfigurator.configure(file);
-				} catch (MalformedURLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				*/
 				try {
 					String log4jXmlUrl = OptionConverter.getSystemProperty("log4j.configuration", null);
 					DOMConfigurator conf = new DOMConfigurator();
@@ -61,7 +49,6 @@ public class RepositoryClassLoader {
 					e.printStackTrace();
 				}
 
-				
 				add(classLoader, loggerRepository);
 			}
 		}

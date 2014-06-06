@@ -51,7 +51,7 @@
 	<classpathentry kind="lib" path="tomcat-7.0_bck/webapps/examples/WEB-INF/lib/standard.jar"/>
 	<classpathentry kind="lib" path="tomcat-7.0/bin/bootstrap.jar"/>
 	<classpathentry kind="lib" path="tomcat-7.0/bin/commons-daemon.jar"/>
-	<classpathentry kind="lib" path="tomcat-7.0/bin/tomcat-juli.jar"/>
+	<classpathentry kind="lib" path="tomcat-7.0/bin/tomcat-juli.jar" sourcepath="/Tomcat"/>
 	<classpathentry kind="lib" path="tomcat-7.0/lib/annotations-api.jar"/>
 	<classpathentry kind="lib" path="tomcat-7.0/lib/catalina-ant.jar"/>
 	<classpathentry kind="lib" path="tomcat-7.0/lib/catalina-ha.jar"/>
