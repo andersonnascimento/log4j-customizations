@@ -1,0 +1,9 @@
+export CATALINA_HOME=./tomcat-7.0
+export CATALINA_BASE=$CATALINA_HOME
+
+export LOGGING_CONFIG=LC
+export LOGGING_MANAGER=LM
+
+export CATALINA_OPTS="$CATALINA_OPTS -Dlog4j.configuration=file:////home/silvaa/dev/source/log4j-customizations/tomcat-7.0/conf/log4j.xml"
+
+./tomcat-7.0/bin/shutdown.sh
