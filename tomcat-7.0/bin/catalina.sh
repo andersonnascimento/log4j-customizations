@@ -284,7 +284,7 @@ if [ "$1" = "debug" ] ; then
       exec "$_RUNJDB" "$LOGGING_CONFIG" $LOGGING_MANAGER $JAVA_OPTS $CATALINA_OPTS \
         -Djava.endorsed.dirs="$JAVA_ENDORSED_DIRS" -classpath "$CLASSPATH" \
         -sourcepath "$CATALINA_HOME"/../../java \
-        -Djava.security.manager \
+        -Djava.security.manager \l
         -Djava.security.policy=="$CATALINA_BASE"/conf/catalina.policy \
         -Dcatalina.base="$CATALINA_BASE" \
         -Dcatalina.home="$CATALINA_HOME" \
